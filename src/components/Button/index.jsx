@@ -1,9 +1,11 @@
 import React from 'react'
 import "./index.css"
 
-const Button = () => {
+const Button = ({text}) => {
   return (
-    <div>Button</div>
+    <div
+    className='primary-btn primary-bg '>{text}
+    <div className="underline"></div></div>
   )
 }
 
