@@ -33,14 +33,15 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
    
-    const { email, password, firstName, lastName } = req.body;
-    if (!email || !password || !firstName || !lastName) {
+    const { email, password, firstName, lastName,userType } = req.body;
+    if (!email || !password || !firstName || !lastName || !userType) {
         console.log(email,"email");
         res.status(400).send({ message: "all fields are required" });
     }else{
         try {
             // const user = await User.create({ username, password, firstName, lastName });
             const user =  new User({
+                userType,
                 email,
                 password,
                 firstName,

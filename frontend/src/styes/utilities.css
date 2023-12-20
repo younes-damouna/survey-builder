@@ -167,3 +167,10 @@
 .cursor{
   cursor: pointer;
 }
+.text-black{
+  color: black;
+}
+
+.w-50{
+  width: 50%;
+}
