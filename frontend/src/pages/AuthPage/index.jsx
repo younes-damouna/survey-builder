@@ -15,7 +15,9 @@ const AuthPage = () => {
         />
       </div>
       <div className="form-container secondary-bg w-100 rounded-10">
-        {/* <LogiForm /> */}
+        <LogiForm />
+      </div>
+      <div className="form-container secondary-bg w-100 rounded-10">
         <RegisterForm />
       </div>
     </div>
