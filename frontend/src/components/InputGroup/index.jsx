@@ -11,8 +11,9 @@ const InputGroup = ({
   id,
   showRemove,
   required
-  ,halfWidth
-  // removeElement
+  ,halfWidth,
+  removeElementArray,
+  index
 }) => {
   const [visible, setVisible] = useState(true);
   const removeElement = (e) => {
@@ -36,7 +37,9 @@ const InputGroup = ({
             required={required}
           />
           {showRemove ? (
-            <div onClick={(e) => removeElement(e)}>delete</div>
+            <div onClick={(e) => {removeElement(e)
+              removeElementArray(showRemove)
+            }}>delete</div>
           ) : (
             <></>
           )}

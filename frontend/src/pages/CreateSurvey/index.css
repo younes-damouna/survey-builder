@@ -3,3 +3,12 @@
     margin-block: 20px;
 
 }
+.question-type-wrapper{
+    background-color: rgb(238, 234, 234);
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px 1px gray;
+}
+.survey-page{
+    width: 50%;
+}

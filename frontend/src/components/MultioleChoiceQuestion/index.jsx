@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import InputGroup from "../InputGroup";
 import Button from "../Button";
-const MultipleChoiceQuestion = () => {
-    const [options, setOptions] = useState([1,1]);
-    const [val, setVal] = useState(3);
-    
+const MultipleChoiceQuestion = ({
+  handleOnChange,
+  handleAnswers,
+  answers,
+  id,
+  type,
+  handleRemoveAnswer,
+}) => {
+  const [options, setOptions] = useState([1, 1]);
+  const [val, setVal] = useState(3);
+
   const handleClick = () => {
     console.log("hello");
-    
+
     setOptions((prev) => [...prev, val]);
-    setVal((prev)=>prev+=1)
+    setVal((prev) => (prev += 1));
     console.log(val);
   };
+
+  // useEffect(() => {
+
+  // }, [options])
+
+  // console.log(answers);
   return (
     <div>
-      <div className="multi-choic-question input-group">
+      <div className="multi-choic-question input-group ">
         <InputGroup
-        
           id={"email"}
           type={"email"}
-          placeholder={"Ask A Question"}
+          placeholder={"Ask a Question"}
           name="text"
-          label="Question" className={"text-black"}
-          onChange={() => {
+          label="Question Title"
+          className={"text-black"}
+          onChange={(e) => {
+            handleOnChange(id, e.target.value, type);
             // onChange
+            // console.log(id)
           }}
         />
-            {/* <InputGroup
+        {/* <InputGroup
                 showRemove={false}
                 id={"email"}
                 type={"text"}
@@ -39,7 +54,7 @@ const MultipleChoiceQuestion = () => {
                     // onChange
                 }}
                 /> */}
-             {/* <InputGroup
+        {/* <InputGroup
             showRemove={false}
               id={"email"}
               type={"text"}
@@ -51,22 +66,25 @@ const MultipleChoiceQuestion = () => {
                 // onChange
               }}
             /> */}
-        {options.map((option,index) => {
+        {options.map((index, g) => {
           return (
             <InputGroup
-            halfWidth={"w-50"}
-            showRemove={index===0 || index===1?false:true}
+              halfWidth={"w-50"}
+              showRemove={index === 0 || index === 1 ? false : true}
               id={"email"}
               type={"text"}
               placeholder={"answer"}
               name="text"
-              label={`Option ${index+1}`}
+              label={`Option ${index + 1}`}
               className={"text-black"}
               required={true}
-              removeElement={()=>{
-               
+              removeElementArray={(e) => {
+                handleRemoveAnswer(g);
+
+                // console.log(notRemoved)
               }}
               onChange={(e) => {
+                handleAnswers(g, e.target.value);
                 // onChange
                 // console.log(e.target.value)
               }}
